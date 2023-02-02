@@ -1,0 +1,16 @@
+No of AWS Regions, AZ, Edge locations ?
+Alternative ways for connecting your console ?
+Some AWS CLI commands 
+How to backup a running instance ? 
+What is AWS Outpost ?
+Issues during login to & PC If your Linux-build server getting slow down, what will you do to check ?
+While connecting to your EC2 instances, what are the possible connection issues one might face ? 
+What are the Global Services in AWS ?
+How to automate ami update in autoscaling ?
+Statefull vs Stateless Application ?
+What to do when PEM is Lost ?
+==============================================================================
+EC2
+How to create AMI ? 
+Types of ec2 Models ?
+

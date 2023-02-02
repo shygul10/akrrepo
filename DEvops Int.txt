@@ -1,0 +1,241 @@
+GIT:
+
+Branching strategy:
+
+We have multiple branches like depending upon the environment, like master branch which will be related to the production and we have deployment
+branch, so in deployment branch the coders will write the code and commit them. we have feature branches for any new features to be added and for
+any feature updates. we also have the release branch where we will be pushing the code into release branch from the master and we will be
+pushing it to the prod environment and we also have hotfix branch where if their are any incidents and any immediate hotfix need to be created
+we will be creating the hotfix branch and we will be pusing it to the prod environment using master branch. So totally we have 5 branches, master
+release, hotfix, developer and feature branch.;/3
+
+Deployment rollback
+
+Git merge:
+
+Git merge will be automatically merging the two branches and it will be merging in the chronological order like in a timely basis the commit
+will be merged together.
+
+Git rebase:
+
+Git rebase we will have more control like i can set the order like, the order history like how it commits with the merge to the current branch.
+so in Git rebase we will have more control and it will be adding the commits to the head of my current branch.
+
+Git tag:
+
+The main function of tagging is to capture a point in a Git history that marks the release version. Tags will not change. once the tag is created, 
+it will also have no history of commits. For example, tagging a commit with release version 3.0 means that commit is the final commit before the 
+launch of the 3.0 version of the software.
+Annotated and light-weight are the two type of tags available.
+
+Git fetch:
+
+git fetch will only update your local repository, we need to use checkout or merge command to update it to our working copy.
+
+Git pull:
+
+git pull is a combination of git fetch + git merge, it will update your both local repo and make changes in working directory
+
+Git clone:
+
+git clone is used for downloading exactly what is currently working on the remote server repository and saving it in my
+machine's folder where the project is placed.
+
+how you switch between branches:
+
+usually we can use git checkout and brach name to switch to the particular branch, we can also create a new branch and switch over to it by
+passing a parameter -b. so when i mention git checkout -b branch name it will create a branch and takes me into that branch.
+
+Git cherrypick:
+
+It is used to select only a particular commit and merge it with the current branch. I can use
+"GIT cherrypick Commit Id" and this will merge the commit to our current branch.
+
+Fork:
+
+using Git fork i can take a copy of the complete repository from one Git hub account to my account. I can work and make any changes which wil
+not reflect in the original persons repository.
+
+Reset:
+
+In Git reset we have 3 options, Git reset --hard, Git reset --mix and Git reset --soft. Git reset will delete the commit and also the working
+directory. The index will also be deleted. when I use Git reset --hard it will be deleting the commits.
+
+revert: 
+
+Git reveret will create a new commit like it will be reverting the changes and creating a new commit.
+
+Jenkins:
+
+how to install jenkins
+
+what is master slave configuration:
+
+A Master-Slave configuration is used to manage the distributed builds. The machine where I install Jenkins will be my Jenkins master and that 
+will run in port 8080 by default. On slave machines, I will install a program called Agent using JVM. Jenkins slaves connect to the Jenkins 
+master using the Java Network Launch Protocol. Mainly master will schedule the build jobs and dispatch builds to the slaves for execution.
+It will also monitor the slaves and fetch the build response of the build performed from slaves and it will show in the console output.
+To connect the slave machine to the master, I need to go to the slave machine and go the jenkins server URL
+then go to Manage jenkins -> Mangae nodes, click on the slave machine. Then I will give launch to launch the agent from browser on slave.
+Then we can run the program.
+
+https://treehozz.com/what-is-master-slave-configuration-in-jenkins
+
+
+types of pipeline and diff between them
+
+Recently used common plugins in my project
+
+Git
+Maven
+Sonarqube
+SSH Build Agent
+Deploy to Container
+Role based Strategy Authorisation
+Delivery Pipeline view
+Parameterised Trigger Plugin
+Declarative Pipeline
+
+how to integrate jenkins with maven and sonar
+Upstream and downstream jobs
+parameterised trigger
+what is post build action
+how to add or create users in jenkins
+what is backup plugin
+how to create and trigger build jobs
+environment variable in jenkins
+multibranch pipeline
+
+Ansible:
+
+what type of playbooks you have written
+copy and fetch module
+ansible config file and default path
+what is inventory types and diff between them
+modules in ansible
+task in ansible
+play and playbooks in ansible
+what is roles and what is jinja2 template
+what is vault
+what is tags
+notifiers and handler
+
+Terraform:
+
+What is provider
+what is variables
+terraform validate
+terraform FMT
+terraform plan
+terraform apply
+terraform destroy
+modules in terraform
+workspace
+functions
+state file and types
+terraform recreate
+
+Docker:
+
+what is docker
+docker basic commands
+what is image
+waht is container
+entrypoint and cmd
+diff betn copy and add
+types of docker n/w
+back up of existing container
+docker hub
+docker top and inspect
+docker compose
+docker swarm
+docker volumes
+
+K8's:
+
+what is K8's
+waht is namespace
+waht is replicaset
+waht is secrets
+what is cofig map
+what is master node and worker node components
+waht is node selector and node affinity
+what is pvc and pv
+types of services
+what is deployment, replicaset and stateful set
+waht is r band
+
+
+
+
+
+
+
+
+Jenkins:
+
+jenkins file:
+
+Jenkinsfile is basically a text file where we can write pipeline code to define the Jenkins pipeline. It can be checked into Git along with our 
+project source code. So every application will have its own Jenkinsfile to do the build, test & deploy. 
+There are two ways of writing a Jenkinsfile – One is called Scripted Pipeline, the syntax for pipeline is strictly Groovy and it starts with the 
+word node. 
+Another is Declarative pipeline which is advanced and has more advantages over scripted pipeline and this will start with the work Pipeline.
+
+
+Executors: 
+
+Executors decides how many jobs can run in jenkins parallely at a time,so we can set up the no of executors based on the requirement but by default 
+there will be only 2 executors.  e.g if I have 3 build and I have 2 executors and if am building all 3 jobs simultaneously the first 2 jobs will be build and
+the 3rd one will be in build queue till the first 2 builds are complete.
+
+Shared library:
+
+https://www.lambdatest.com/blog/use-jenkins-shared-libraries-in-a-jenkins-pipeline/
+
+Jenkins shared library is where we will have a common pipeline code in the Version control system that we can use in any no. of pipelines just by
+referencing it. Even multiple teams can use the same library for their pipelines. This is used to avoid code duplication and for code
+reusability. The shared libraries will be placed in the central repo and can be called using a function when writing the jenkins file. The shared
+library repository will have 3 directories src, vars and resources.
+Vars - will hold the global shared library code that can be called from pipeline, it has all the library files with (.) groovy extension
+Src - it is regular java source code directory
+resources - will contain all non groovy files required for the pipeline
+
+Jenkins port change:
+
+Under /var/lib/jenkins we have jenkins.config file, in that config file I need to search for the default port and I can update the port no to the
+desired one. Then we need to restart jenkins for the change to get implemented.
+
+what will you do when a build fails in Jenkins:
+
+we can check on the logs and I can do the exact troubleshooting, we also have build failure analyzer so this plugin analysis the cause of the
+failed jobs and presents the cause of the build. So using the build failure analyzer it can check for all the failovers and causes for the build
+failure from the scratch. so with this particular plugin I can give the description and the parent ID and their text source where the build log
+has to get generated. So based upon the above plugin it will trobleshoot the jobs and I can get the information of failovers like it will pass
+information, errors, classes, check style errors, style error these kind of things.
+
+
+Jenkins pipeline types:
+
+There are two types of pipeline: scripted and declarative pipeline
+
+
+
+
+Terraform backend:
+
+we have s3 backend, so it is a backend.tf file we can create the resources and object name and it the backend.tf file I can specify the resources
+path and the object name. So the remote state file will get stored inside s3 instead of storing it in local repository we keep them in s3 and we
+lock them using dynamo db. So it is protected by being accessed by multiple developers and I can protect my resources information in my state
+file about the infrastructure.
+.
+
+
+
+
+
+
+
+
+
+

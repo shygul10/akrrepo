@@ -1,0 +1,23 @@
+Kubernetes:
+In k8s we have pod space replica set secrets which we called as objects & 
+i use node selectors in k8s which is used to select the zone where the pod needs to launch.
+We use k8s adm joint to have master and slave. 
+Node affinity in yaml file we need to specify the node name 
+kind "Deployment blue berry deployment and replica sets. 
+=================================================================
+Ansible:
+In ansible we have written multiple playbooks. Ansible config management tool terraform is IAAC Infra structure as a code tool
+ where i cant create infrastructure in terraform and do configuration in related deployments automations using ansible. 
+So i have written ansible adopt commands and also ansible playbooks. Some of the frequent modules used are m modules service modules and copy modules. 
+So modules are most used for reusability. In ansible we use ansible syntax check which is also 
+use DryRun which we normally do it will check whether the syntax is correct. 
+Ansible walt i use ansible valtpause cmd and also check the syntax we can go for the dryrun over there .
+ Apart from that we are also encrypt using  ansible valt encrypt play book name or ansible valtpause which is used to get the password to make a copy module work recurrsively we use synchronise module.
+ Ansible playbook when os=redhat ansible playbook - tasks so if multiple task has to be executed i can use ignore error Yes.
+=================================================================
+Terraform:
+Am using Run tf cmd with var file and enable version control on tf state file buckets manage s3 backend for tf state files Multiple tf modules and environments can easily used with terragrunt. tf uses dependencies information and define the current order in which i need to create the diff resources. We have tf modules and terraform provisioner, local provisioner and remote provisioner . tf providers tf modules so this kinds of aspects we create and we store a state file in a backend.tf file. In tf resources and object specify in a backend .tf file and my state file is stored inside a  s3 bucket. 
+=================================================================
+
+
+
