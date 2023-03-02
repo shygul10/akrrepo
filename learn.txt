@@ -1,0 +1,17 @@
+Python 
+Terraform 
+Docker 
+Kubernetes
+Linux 
+=================
+Ec2
+S3
+Vpc
+Route53
+Lambda
+EKS and ECS
+=================
+Ansible 
+Jenkins
+Git
+=================

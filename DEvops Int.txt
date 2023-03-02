@@ -228,7 +228,9 @@ we have s3 backend, so it is a backend.tf file we can create the resources and o
 path and the object name. So the remote state file will get stored inside s3 instead of storing it in local repository we keep them in s3 and we
 lock them using dynamo db. So it is protected by being accessed by multiple developers and I can protect my resources information in my state
 file about the infrastructure.
-.
+
+
+
 
 
 

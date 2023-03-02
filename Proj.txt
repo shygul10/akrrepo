@@ -1,0 +1,144 @@
+AWS Proj this for pub application
+
+for private application we use VPC 
+
+Environments:
+Production
+Disaster Recovery - DR
+
+Activities :
+AWS prod setup
+
+Steps:
+1) ACM creation 
+                              Request a public certificates as per the registered domains.
+pub certificate  --> add domain names --> add another certifiacte(dr.domain name or *.domain name)
+validation method --> Dns validation or email validation. real time by through Client mail 
+for proj purpose DNS validation(route 53)
+Skip tags
+confirm the request.
+================================================================================
+2)Route 53 Creation:
+ Route 53 setup and link to godaddy domain dns management
+ create hosted zone
+ add domain name server which is in record set
+ create record set from ACM.
+================================================================================
+3)RDS setup
+	2 DBs
+	       Production DB 
+	       DR DB
+	both with sg make as all traffic
+create sg with ALL tcp
+create dbsubnet
+database option --> port 3306 --> disable deletion protection
+same repeat for drdb
+================================================================================
+4)IAM role:
+create an IAM role with Full access
+	create role for proj
+	ec2 with all service --> Admin access permission.-- Ec2 role for alll services
+================================================================================
+5)Ec2 creation
+	create 2 ec2 with iam roles enabled & add user data in to it
+user data
+#!/bin/bash
+yum install httpd phd-mysql -y
+amazon-linux-extras install -y php7.3
+cd /var/www/html
+echo "healthy" >healthy.html
+wget https://wordpress.org/latest.tar.gz
+tar -xzf latest.tar.gz
+cp -r wordpress/* /var/www/html/
+rm -rf wordpress
+rm -rf latest.tar.gz
+chmod -R 755 wp-content
+chown -R apache:apache wp-content
+wget https://s3.amazonaws.com/bucketforwordpresslab-donatedelete/htaccess.txt
+mv htaccess .txt.htaccess
+chkconfig httpd on
+service httpd start
+
+after login as root user 
+
+please check apache running cmd is ps -ef | grep apache
+if apache is running copy ip address and paste it on web and see checking
+inside the prod wordpress then press lets go
+on wordpress on database host please give proddb endpoint
+cd /var/www/html/
+ls -lrt
+vi wp-config.php 
+copy the wordpress text and paste it
+cat wp-config.php
+repeat the same above steps for DR.db
+mistake : port number include 3306  on endpoint
+on wordpress click run installation
+
+================================================================================
+ELB creation
+create 2 load balancer one for prod another for DR
+create app or classic load balancer
+in html part please enter healthy.html
+create two classic lb and map the appropiate ec2 instance
+================================================================================
+r53 and elb sync
+create record set 
+set allias as prod lb
+name as dr.domain name
+same as drlb
+================================================================================
+integration over 
+
+test the process elb dns name
+
+edit the llisteners in elb as 443 https
+ add the ssl certificate from acm
+
+incase certificate is expired we have to renew that not developer
+
+================================================================================
+s3 creation
+set crontab jobs in the ec2 in small intervals to copy the content from prod to s3 & s3 to DR
+we need to flow data from prod to Dr
+should use crontab script 
+crontab -e
+cron -- its like scheduler expression used in cloud watch
+
+Production Crontab
+*/2**** aws s3 sync --delete /var/www/html/wp-content/uploads s3://wordpress-mediaasset-greens1212
+
+*/2**** aws s3 sync --delete /var/www/html/wp-content/uploads s3://wordpress-code-greens1212
+
+DR crontab:
+*/2**** aws s3 sync --delete s3://wordpress-mediaasset-greens1212 /var/www/html/wp-content/uploads
+*/2**** aws s3 sync --delete s3://wordpress-code-greens1212 /var/www/html/
+
+
+log in to prod ec2 --> crontab -l
+
+crontab -e 
+copy and paste */2**** aws s3 sync --delete /var/www/html/wp-content/uploads s3://wordpress-mediaasset-greens1212(today date)
+
+repeat the same step in DR
+
+before create s3 bucket name 
+================================================================================
+Cloud Watch alert -->
+ https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/mon-scripts.html
+ run the code to production part 
+by using cd /
+pwd
+ls -lrt
+cd /root
+copy paste code 
+
+
+
+
+
+	
+
+ 
+
+
+

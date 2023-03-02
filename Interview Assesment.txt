@@ -1,0 +1,45 @@
+Explain the recent DevOps project that you have worked on?
+What deployment strategies do you know and have used before? How can a company deploy with no downtime?
+Name the initial namespaces from which Kubernetes starts?
+How are Kubernetes and Docker related?
+Explain the end-user workflow steps for Terraform.
+Docker volumes stored?
+docker run -i -t alpine /bin/bash
+
+What line is missing from this Dockerfile that allows us to install Python modules?
+FROM python:3
+ENV PYTHONUNBUFFERED 1
+RUN mkdir /code
+WORKDIR /code
+COPY requirements.txt /code/
+***
+COPY . /code/
+
+What does the following command do with respect to the Amazon EC2 security groups: "ec2-create-group CreateSecurityGroup"
+
+If I want my instance to run on a single-tenant hardware on AWS, which value do I have to set the instance's tenancy attribute to?
+
+Decorators in Python are able to accept arguments for functions and modify them.
+
+What is the syntax for slicing?
+
+lamda function used in python
+
+What line is missing to loop through the product of arrays below?
+import itertools
+a = [1, 50]
+b = [2, 2000]
+<FUNCTION>
+  #todo
+
+What is the below code an example of?
+mylist = [1, 2, 3, 4, 5]
+squared = [x**2 for x in mylist]
+
+An application saves the logs to an S3 bucket. A user wants to keep the logs for one month for troubleshooting purposes, and then purge the logs. What feature will enable this?
+
+An application running on EC2 instances processes sensitive information stored on Amazon S3. The information is accessed over the Internet. The security team is concerned that the Internet connectivity to Amazon S3 is a security risk. Which solution will resolve the security concern?
+
+ key difference between a list and a tuple?
+
+In the Python file, write a program to get all the files from a public S3 bucket named coderbytechallengesandbox. In there there might be multiple files, but your program should find the file with the prefix __cb__, and then output the full name of the file. You should use the boto3 module to solve this challenge.

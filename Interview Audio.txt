@@ -1,0 +1,30 @@
+Backend Tf:
+if i dont want to store state file in local we will create a backend.tf file and it will update the state file in the remote backend like S3 and we also enable the using dynamodb and it will use locking mechanism and protect the state file. 
+==============================================================================
+Day yo Day activities like in the month start we will be getting a new server to in existing application. so this the one of the requirement i get. for onboarding a new application full stack monitoring i will be connecting the application team that requiremnet sheet filled.
+
+
+==============================================================================
+what application you deployed in AWS platform ?
+usually we use terraform to do this all the resources and we will do the automation  through the cicd pipeline jenkins.
+
+First i will create my EC2 instances based upon the requirement and then i will assign the VPC for it and will create IAM role for my ec2 instance for any of my database or any S3 buckets and then i will do VPC peering and the will connect it to diff region or within region. 
+
+And i can deploy 3 tier architecture were the request will come from route 53 so i have to create the route 53 DNS and while the cloud front static data stored in the S3 and from there the application load balancer it will be routed so i have to configure the load balancer to create the S3 bucket and then that to the webserver static content and using the reverse proxy plugin request will be redireccted to the application server from that using the data source property it will get redirected to my DB.
+
+So we can create data base like dynamo db msql mongo db rds.
+so here my CICD pipeline have the Github because in our project we will have majorly use the devops tools for doing the deployment.
+And i aslo know that we can use the deployment using the code deploy and code pipeline in te aws services
+==============================================================================
+Images is on the Private S3 Bucket but someone has to upload that s3 image on the Website how can we give access what access we have  to give?
+for public we can do like by sharing the object URL they will be able to access it the images.
+for private we share the endpoint and object URL that is the way we can access it in private S3 bucket.
+==============================================================================
+Technical Challenges in Any Deployment or project?
+When i do any deployment i will get a failiures at that time i will check jenkins output and i will identify the reason for the build failiure and i will try to eradicate those errors by finding the solutions and we have also used multiple stages in our project so in a redhat linux machine maven have to build the code. Then build code has to be deployed in linux servers so after a set of build stage deployment code has to deployed in to the linux machines but deployement got failed so issue was no.of executors in linux machinne was  not available so the executor process does not closed correctly that was the reason.So i have to login to the server  check for the process and port number and i use the user command to create the port numbers and i have to restart the process in linux servers. So it was isssue in the executor level.So i had also issues on the dependancies so in pipeline we use statement like trycach statemennts in expression to capture the errors and based upon the errors we will try to trouble shoot those issues. 
+==============================================================================
+Ansible - Two Important Files
+Inventory File -- /etc/ansible/hosts
+Configuration File -- /etc/ansible/ansible.cfg
+
+ 
